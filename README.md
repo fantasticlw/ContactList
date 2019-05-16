@@ -1,12 +1,14 @@
 # ContactList
 ContactList
 
-调用方式
+## 调用方式
+
 Intent intent = new Intent(TestActivity.this, SelectPersonActivity.class);
 intent.putExtra(ContactConst.ContactUrl, "requestUrl");
 startActivityForResult(intent, 0);
 
-返回结果
+## 返回结果
+
 @Override
 protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
