@@ -28,7 +28,7 @@ public class TestActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TestActivity.this, SelectPersonActivity.class);
-                intent.putExtra(ContactConst.ContactUrl, "http://192.168.20.90:8888/res111901/platform/api/management/contacts/getContactsByPolice?userType=1&userId=ruice1");
+                intent.putExtra(ContactConst.ContactUrl, "http://192.168.20.90:8888/res111901/platform/api/management/contacts/getContactsByPolice?userId=ruice1&userType=1");
                 startActivityForResult(intent, 0);
             }
         });

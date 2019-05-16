@@ -86,7 +86,6 @@ public class SelectPersonActivity extends BaseActivity implements
 
         ContactPath = getFilesDir().getAbsolutePath()+"/deptanduser";
         requestUrl = getIntent().getStringExtra(ContactConst.ContactUrl);
-        requestUrl = "http://192.168.20.90:8888/res111901/platform/api/management/contacts/getContactsByPolice?userId=ruice1&userType=1";
 
         findView();
         initTree();
