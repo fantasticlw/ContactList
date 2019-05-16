@@ -20,16 +20,6 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     
         ArrayList<ContactUser> userInfos = data.getParcelableArrayListExtra("select_data");
         
-        String text = "";
-        
-        for (ContactUser user : userInfos){
-        
-            text+=user.getUserName()+", ";
-            
-        }
-        
-        textView.setText(text);
-        
     }
     
 }
