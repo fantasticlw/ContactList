@@ -157,8 +157,7 @@ public class SelectPersonActivity extends BaseActivity implements
     }
 
     public List<DeptAndUser> getDatas() {
-//        String result = Utils.readFile2String(new File(ContactPath), "utf-8");
-        String result = null;
+        String result = Utils.readFile2String(new File(ContactPath), "utf-8");
         if(result == null){
             getContactsByAuxiliaryPolice();
             return null;
