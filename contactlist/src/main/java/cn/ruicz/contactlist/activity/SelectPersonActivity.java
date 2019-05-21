@@ -1,5 +1,6 @@
 package cn.ruicz.contactlist.activity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -86,12 +88,16 @@ public class SelectPersonActivity extends BaseActivity implements
         return R.layout.activity_select_person;
     }
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true);
+
         SystemBarTintManager systemBarTintManager = new SystemBarTintManager(this);
-        systemBarTintManager.setStatusBarTintColor(getResources().getColor(R.color.colorPrimary));//设置状态栏颜色
+        systemBarTintManager.setStatusBarTintColor(typedValue.data);//设置状态栏颜色
         systemBarTintManager.setStatusBarTintEnabled(true);//显示状态栏
     }
 
