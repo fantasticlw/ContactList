@@ -11,10 +11,12 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -43,6 +46,7 @@ import cn.ruicz.contactlist.http.HttpManager;
 import cn.ruicz.contactlist.treeview.model.TreeNode;
 import cn.ruicz.contactlist.treeview.view.AndroidTreeView;
 import cn.ruicz.contactlist.utils.ContactConst;
+import cn.ruicz.contactlist.utils.SPUtils;
 import cn.ruicz.contactlist.utils.Utils;
 import io.reactivex.functions.Consumer;
 
@@ -85,18 +89,10 @@ public class SelectPersonActivity extends BaseActivity implements
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            // 实现透明状态栏
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        }
+
+        SystemBarTintManager systemBarTintManager = new SystemBarTintManager(this);
+        systemBarTintManager.setStatusBarTintColor(getResources().getColor(R.color.colorPrimary));//设置状态栏颜色
+        systemBarTintManager.setStatusBarTintEnabled(true);//显示状态栏
     }
 
     @Override
@@ -109,6 +105,12 @@ public class SelectPersonActivity extends BaseActivity implements
 
         ContactPath = getFilesDir().getAbsolutePath()+"/deptanduser";
         requestUrl = getIntent().getStringExtra(ContactConst.ContactUrl);
+
+        SPUtils spUtils = new SPUtils(this, ContactConst.SPNAME);
+        if (!spUtils.contains(ContactConst.ContactUrl) || !TextUtils.equals(spUtils.getString(ContactConst.ContactUrl), requestUrl)){
+            new File(ContactPath).delete();
+            spUtils.put(ContactConst.ContactUrl, requestUrl);
+        }
 
         findView();
         initTree();
@@ -158,7 +160,7 @@ public class SelectPersonActivity extends BaseActivity implements
 
     public List<DeptAndUser> getDatas() {
         String result = Utils.readFile2String(new File(ContactPath), "utf-8");
-        if(result == null){
+        if(TextUtils.isEmpty(result)){
             getContactsByAuxiliaryPolice();
             return null;
         }
