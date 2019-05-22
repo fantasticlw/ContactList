@@ -94,7 +94,7 @@ public class SelectPersonActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
 
         TypedValue typedValue = new TypedValue();
-        getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true);
+        getTheme().resolveAttribute(android.R.attr.colorPrimary, typedValue, true);
 
         SystemBarTintManager systemBarTintManager = new SystemBarTintManager(this);
         systemBarTintManager.setStatusBarTintColor(typedValue.data);//设置状态栏颜色
