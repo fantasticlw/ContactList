@@ -21,10 +21,11 @@ Intent intent = new Intent(getApplicationContext(), SelectDepartmentActivity.cla
 intent.putExtra(ContactConst.ContactUrl, "requestUrl");                                                                                   
 startActivityForResult(intent, ContactConst.iGetDeaprt);                                                                                   
 
+#### 返回结果
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {                                                           
     super.onActivityResult(requestCode, resultCode, data);                                                                                 
     if (resultCode == ContactConst.iGetDeaprt){                                                                                           
-       ArrayList<DeptAndUser> userInfos = data.getParcelableArrayListExtra(ContactConst.SELECTDEPARTMENT);                               
+      ArrayList<DeptAndUser> deptInfos = data.getParcelableArrayListExtra(ContactConst.SELECTDEPARTMENT);                            
     }                                                                                                                                     
 }                                                                                                                                         
 
