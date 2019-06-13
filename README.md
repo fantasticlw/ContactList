@@ -10,10 +10,10 @@ startActivityForResult(intent, 0);<br/>
 
 #### 返回结果
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {<br/>
-&nbsp;&nbsp;super.onActivityResult(requestCode, resultCode, data);<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;if (resultCode == RESULT_OK) {<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<*ContactUser*> userInfos = data.getParcelableArrayListExtra("select_data");<br/>
-&nbsp;&nbsp;&nbsp;}<br/>
+    super.onActivityResult(requestCode, resultCode, data);<br/>
+       if (resultCode == RESULT_OK) {<br/>
+          ArrayList<*ContactUser*> userInfos = data.getParcelableArrayListExtra("select_data");<br/>
+       }<br/>
 }<br/>
     
 ### 2.获取通讯录部门列表， 同理调用：
@@ -23,10 +23,10 @@ startActivityForResult(intent, ContactConst.iGetDeaprt);<br/>
 
 #### 返回结果
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {<br/>
-    >super.onActivityResult(requestCode, resultCode, data);<br/>
-        >if (resultCode == ContactConst.iGetDeaprt){<br/>
-            >ArrayList<*DeptAndUser*> deptInfos = data.getParcelableArrayListExtra(ContactConst.SELECTDEPARTMENT);<br/>
-        >}<br/>
+    super.onActivityResult(requestCode, resultCode, data);<br/>
+       if (resultCode == ContactConst.iGetDeaprt){<br/>
+         ArrayList<*DeptAndUser*> deptInfos = data.getParcelableArrayListExtra(ContactConst.SELECTDEPARTMENT);<br/>
+       }<br/>
 }<br/>                                                                                                                                         
 
 
