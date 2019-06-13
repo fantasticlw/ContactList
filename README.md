@@ -1,5 +1,5 @@
 # ContactList
-implementation [com.github.fantasticlw:ContactList:0.12]
+implementation com.github.fantasticlw:ContactList:0.12
 
 ## 调用方式
 
