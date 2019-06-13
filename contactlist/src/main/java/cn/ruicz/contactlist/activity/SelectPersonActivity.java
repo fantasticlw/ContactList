@@ -140,7 +140,7 @@ public class SelectPersonActivity extends BaseActivity implements
     }
 
     private void initView(){
-        setTitle("选择");
+        setTitle("选择人员");
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mSelectedPersonRecyclerView.setLayoutManager(manager);
         mSelectedPersonRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -173,7 +173,7 @@ public class SelectPersonActivity extends BaseActivity implements
     public void getContactsByAuxiliaryPolice() {
         final ProgressDialog waitDialog = new ProgressDialog(SelectPersonActivity.this);
         waitDialog.setMessage("请稍后...");
-        waitDialog.setCancelable(false);
+        waitDialog.setCancelable(true);
         waitDialog.show();
         HttpManager.getInstance().getPoliceDeptAndUsers(SelectPersonActivity.this, requestUrl, new Consumer<String>() {
             @Override

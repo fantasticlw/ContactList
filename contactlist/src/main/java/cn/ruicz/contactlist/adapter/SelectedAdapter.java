@@ -7,10 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import cn.ruicz.contactlist.R;
 import cn.ruicz.contactlist.entity.ContactUser;
 import cn.ruicz.contactlist.entity.PersonTreeItem;

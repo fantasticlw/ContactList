@@ -17,5 +17,6 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity android:name=".activity.SelectPersonActivity" />
+        <activity android:name=".activity.SelectDepartmentActivity" />
     </application>
 </manifest>
