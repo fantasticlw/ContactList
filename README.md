@@ -10,24 +10,24 @@ startActivityForResult(intent, 0);<br/>
 
 #### 返回结果
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {<br/>
-    super.onActivityResult(requestCode, resultCode, data);<br/>
-       if (resultCode == RESULT_OK) {<br/>
-          ArrayList<*ContactUser*> userInfos = data.getParcelableArrayListExtra("select_data");<br/>
-       }<br/>
+    >super.onActivityResult(requestCode, resultCode, data);<br/>
+       >if (resultCode == RESULT_OK) {<br/>
+          >ArrayList<*ContactUser*> userInfos = data.getParcelableArrayListExtra("select_data");<br/>
+       >}<br/>
 }<br/>
     
 ### 2.获取通讯录部门列表， 同理调用：
-Intent intent = new Intent(getApplicationContext(), SelectDepartmentActivity.class);
-intent.putExtra(ContactConst.ContactUrl, "requestUrl");
-startActivityForResult(intent, ContactConst.iGetDeaprt);
+Intent intent = new Intent(getApplicationContext(), SelectDepartmentActivity.class);<br/>
+intent.putExtra(ContactConst.ContactUrl, "requestUrl");<br/>
+startActivityForResult(intent, ContactConst.iGetDeaprt);<br/>
 
 #### 返回结果
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == ContactConst.iGetDeaprt){
-            ArrayList<*DeptAndUser*> deptInfos = data.getParcelableArrayListExtra(ContactConst.SELECTDEPARTMENT);
-        }
-}                                                                                                                                         
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {<br/>
+    >super.onActivityResult(requestCode, resultCode, data);<br/>
+        >if (resultCode == ContactConst.iGetDeaprt){<br/>
+            >ArrayList<*DeptAndUser*> deptInfos = data.getParcelableArrayListExtra(ContactConst.SELECTDEPARTMENT);<br/>
+        >}<br/>
+}<br/>                                                                                                                                         
 
 
 
