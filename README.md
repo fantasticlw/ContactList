@@ -10,7 +10,8 @@ implementation com.github.fantasticlw:ContactList:0.12
 
 #### 返回结果
 >protected void onActivityResult(int requestCode, int resultCode, Intent data) {                                                           
->    super.onActivityResult(requestCode, resultCode, data);                                                                               >      if (resultCode == RESULT_OK) {                                                                                                     >         ArrayList<*ContactUser*> userInfos = data.getParcelableArrayListExtra("select_data");                                           >       }                                                                                                                                 
+>    super.onActivityResult(requestCode, resultCode, data);                                                                                     if (resultCode == RESULT_OK) {                                                                                                     
+>         ArrayList<*ContactUser*> userInfos = data.getParcelableArrayListExtra("select_data");                                           >     }                                                                                                                                 
 >}
     
 ### 2.获取通讯录部门列表， 同理调用：
@@ -20,7 +21,7 @@ implementation com.github.fantasticlw:ContactList:0.12
 
 #### 返回结果
 >protected void onActivityResult(int requestCode, int resultCode, Intent data) {                                                           
->    super.onActivityResult(requestCode, resultCode, data);                                                                               >    if (resultCode == ContactConst.iGetDeaprt){                                                                                           
+>    super.onActivityResult(requestCode, resultCode, data);                                                                                    if (resultCode == ContactConst.iGetDeaprt){                                                                                           
 >       ArrayList<*DeptAndUser*> deptInfos = data.getParcelableArrayListExtra(ContactConst.SELECTDEPARTMENT);                            
 >    }                                                                                                                                     
 >}                                                                                                                                         
