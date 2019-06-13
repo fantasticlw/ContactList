@@ -1,25 +1,32 @@
 # ContactList
-ContactList
+implementation com.github.fantasticlw:ContactList:0.4
 
 ## 调用方式
 
-Intent intent = new Intent(TestActivity.this, SelectPersonActivity.class);
-
-intent.putExtra(ContactConst.ContactUrl, "requestUrl");
-
+## 1.获取通讯录人员列表
+Intent intent = new Intent(getApplicationContext(), SelectPersonActivity.class);                                                           
+intent.putExtra(ContactConst.ContactUrl, "requestUrl");                                                                                   
 startActivityForResult(intent, 0);
 
 ## 返回结果
-
-
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-    super.onActivityResult(requestCode, resultCode, data);
-    
-    if (resultCode == RESULT_OK) {
-    
-        ArrayList<ContactUser> userInfos = data.getParcelableArrayListExtra("select_data");
-        
-    }
-    
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {                                                           
+    super.onActivityResult(requestCode, resultCode, data);                                                                                 
+    if (resultCode == RESULT_OK) {                                                                                                         
+       ArrayList<ContactUser> userInfos = data.getParcelableArrayListExtra("select_data");                                               
+    }                                                                                                                                   
 }
+    
+## 2.获取通讯录部门列表， 同理调用：
+Intent intent = new Intent(getApplicationContext(), SelectDepartmentActivity.class);                                                      
+intent.putExtra(ContactConst.ContactUrl, "requestUrl");                                                                                   
+startActivityForResult(intent, ContactConst.iGetDeaprt);                                                                                   
+
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {                                                           
+    super.onActivityResult(requestCode, resultCode, data);                                                                                 
+    if (resultCode == ContactConst.iGetDeaprt){                                                                                           
+       ArrayList<DeptAndUser> userInfos = data.getParcelableArrayListExtra(ContactConst.SELECTDEPARTMENT);                               
+    }                                                                                                                                     
+}                                                                                                                                         
+
+
+
