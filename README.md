@@ -10,10 +10,10 @@ startActivityForResult(intent, 0);<br/>
 
 #### 返回结果
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {<br/>
->>>>super.onActivityResult(requestCode, resultCode, data);<br/>
->>>>>>>if (resultCode == RESULT_OK) {<br/>
->>>>>>>>>>ArrayList<*ContactUser*> userInfos = data.getParcelableArrayListExtra("select_data");<br/>
->>>>>>>}<br/>
+&nbsp;&nbsp;super.onActivityResult(requestCode, resultCode, data);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;if (resultCode == RESULT_OK) {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<*ContactUser*> userInfos = data.getParcelableArrayListExtra("select_data");<br/>
+&nbsp;&nbsp;&nbsp;}<br/>
 }<br/>
     
 ### 2.获取通讯录部门列表， 同理调用：
