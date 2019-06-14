@@ -40,7 +40,7 @@ public class SelectDepartHolder extends TreeNode.BaseNodeViewHolder<PersonTreeIt
     public View createNodeView(final TreeNode node, PersonTreeItem value) {
         View view = mInflater.inflate(R.layout.select_person_item, null);
         initView(view);
-        if (!value.isDept()){
+        if (node.isLeaf()){
             mPvDown.setVisibility(View.GONE);
         }
         mCbCheck.setVisibility(View.VISIBLE);

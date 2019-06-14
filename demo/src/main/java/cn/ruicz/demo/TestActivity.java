@@ -63,9 +63,9 @@ public class TestActivity extends BaseActivity {
             }
             textView.setText(text);
         } else if (resultCode == ContactConst.iGetDeaprt){
-            ArrayList<DeptAndUser> userInfos = data.getParcelableArrayListExtra(ContactConst.SELECTDEPARTMENT);
+            ArrayList<DeptAndUser> deptInfos = data.getParcelableArrayListExtra(ContactConst.SELECTDEPARTMENT);
 
-            Log.e("Dep", userInfos.get(0).deptnName);
+            Log.e("Dep", deptInfos.get(0).deptnName);
         }
     }
 }

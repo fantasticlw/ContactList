@@ -122,7 +122,7 @@ public class SelectDepartmentActivity extends BaseActivity implements
         mAndroidTreeView.setDefaultAnimation(false);
         mFlContainer.addView(mAndroidTreeView.getView());
         mAndroidTreeView.setSelectedListener(this);
-
+        mAndroidTreeView.expandLevel(1);
     }
 
     private void initView(){
@@ -281,6 +281,11 @@ public class SelectDepartmentActivity extends BaseActivity implements
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.refresh_txl){
+            stringBuilder = new StringBuilder();
+            tvDepart.setText(stringBuilder.toString());
+            if (mDatas.size() > 0){
+                mDatas.clear();
+            }
             getContactsByAuxiliaryPolice();
         }
     }

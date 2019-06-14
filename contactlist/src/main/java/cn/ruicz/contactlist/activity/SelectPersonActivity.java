@@ -137,6 +137,7 @@ public class SelectPersonActivity extends BaseActivity implements
         mAndroidTreeView.setDefaultAnimation(false);
         mFlContainer.addView(mAndroidTreeView.getView());
         mAndroidTreeView.setSelectedListener(this);
+        mAndroidTreeView.expandLevel(1);
     }
 
     private void initView(){
@@ -387,6 +388,11 @@ public class SelectPersonActivity extends BaseActivity implements
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.refresh_txl){
+            mSelectedPersonData.clear();
+            if (mSelectedPersonAdapter.getSelectedData().size() > 0){
+                mSelectedPersonAdapter.mDatas.clear();
+            }
+            mSelectedPersonRecyclerView.setVisibility(View.GONE);
             getContactsByAuxiliaryPolice();
         }
     }
