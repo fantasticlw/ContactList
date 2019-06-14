@@ -25,12 +25,6 @@
             android:layout_gravity="center_vertical"
             android:background="@drawable/check_box_two_selector"/>
 
-        <ImageView
-            android:id="@+id/iv_head"
-            android:layout_width="19dp"
-            android:layout_height="19dp"
-            android:layout_gravity="center_vertical"
-            android:scaleType="centerCrop"/>
 
         <com.github.johnkil.print.PrintView
             android:id="@+id/pv_head"

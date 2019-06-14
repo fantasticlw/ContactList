@@ -27,7 +27,6 @@ public class SelectHolder extends TreeNode.BaseNodeViewHolder<PersonTreeItem> {
     private PrintView mPvHead;
     private TextView mTvContent;
     private PrintView mPvDown;
-    private ImageView mIvHead;
 
     public SelectHolder(Context context) {
         super(context);
@@ -51,14 +50,6 @@ public class SelectHolder extends TreeNode.BaseNodeViewHolder<PersonTreeItem> {
                 }
             }
         });
-        if (node.isContent()) {
-            mPvHead.setVisibility(View.GONE);
-            mIvHead.setVisibility(View.VISIBLE);
-            //setAvatar(context, value.user.getUserId(), mIvHead);
-        } else {
-            mPvHead.setVisibility(View.VISIBLE);
-            mIvHead.setVisibility(View.GONE);
-        }
         mCbCheck.setChecked(node.isSelected());
         mTvContent.setText(value.getText());
         mPvHead.setIconText(context.getResources().getString(value.getIcon()));
@@ -104,7 +95,6 @@ public class SelectHolder extends TreeNode.BaseNodeViewHolder<PersonTreeItem> {
         mPvHead = (PrintView) view.findViewById(R.id.pv_head);
         mTvContent = (TextView) view.findViewById(R.id.tv_content);
         mPvDown = (PrintView) view.findViewById(R.id.pv_down);
-        mIvHead = (ImageView) view.findViewById(R.id.iv_head);
     }
 
     @Override
