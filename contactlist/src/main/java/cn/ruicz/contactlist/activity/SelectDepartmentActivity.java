@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,9 +23,7 @@ import cn.ruicz.contactlist.R;
 import cn.ruicz.contactlist.entity.ContactBean;
 import cn.ruicz.contactlist.entity.DeptAndUser;
 import cn.ruicz.contactlist.entity.PersonTreeItem;
-import cn.ruicz.contactlist.holder.DeptRootHolder;
 import cn.ruicz.contactlist.holder.SelectDepartHolder;
-import cn.ruicz.contactlist.holder.SelectHolder;
 import cn.ruicz.contactlist.http.HttpManager;
 import cn.ruicz.contactlist.treeview.model.TreeNode;
 import cn.ruicz.contactlist.treeview.view.AndroidTreeView;
@@ -184,7 +181,7 @@ public class SelectDepartmentActivity extends BaseActivity implements
                                 .setContent(true);
                     } else {
                         newNode = new TreeNode(new PersonTreeItem(table))
-                                .setViewHolder(new DeptRootHolder(this))
+                                .setViewHolder(new SelectDepartHolder(this))
                                 .setContent(true);
                     }
                 } else {

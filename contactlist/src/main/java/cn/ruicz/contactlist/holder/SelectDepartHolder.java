@@ -29,7 +29,6 @@ public class SelectDepartHolder extends TreeNode.BaseNodeViewHolder<PersonTreeIt
     private PrintView mPvHead;
     private TextView mTvContent;
     private PrintView mPvDown;
-    private ImageView mIvHead;
 
     public SelectDepartHolder(Context context) {
         super(context);
@@ -40,10 +39,9 @@ public class SelectDepartHolder extends TreeNode.BaseNodeViewHolder<PersonTreeIt
     public View createNodeView(final TreeNode node, PersonTreeItem value) {
         View view = mInflater.inflate(R.layout.select_person_item, null);
         initView(view);
-        if (!value.isDept()){
+        if (node.isLeaf()){
             mPvDown.setVisibility(View.GONE);
         }
-        mCbCheck.setVisibility(View.VISIBLE);
         mCbCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -53,32 +51,10 @@ public class SelectDepartHolder extends TreeNode.BaseNodeViewHolder<PersonTreeIt
                 }
             }
         });
-//        if (node.isContent()) {
-//            mPvHead.setVisibility(View.GONE);
-//            mIvHead.setVisibility(View.VISIBLE);
-//            //setAvatar(context, value.user.getUserId(), mIvHead);
-//        } else {
-//            mPvHead.setVisibility(View.VISIBLE);
-//            mIvHead.setVisibility(View.GONE);
-//        }
-        mPvHead.setVisibility(View.VISIBLE);
-        mIvHead.setVisibility(View.GONE);
 
         mCbCheck.setChecked(node.isSelected());
         mTvContent.setText(value.getText());
         mPvHead.setIconText(context.getResources().getString(value.getIcon()));
-//        node.setClickListener(new TreeNode.TreeNodeClickListener() {
-//            @Override
-//            public void onClick(TreeNode node, Object value) {
-//                if(node.isContent()) {
-//                    if (node.isSelected()) {
-//                        getTreeView().selectNode(node, false);
-//                    } else {
-//                        getTreeView().selectNode(node, true);
-//                    }
-//                }
-//            }
-//        });
         return view;
     }
 
@@ -109,7 +85,6 @@ public class SelectDepartHolder extends TreeNode.BaseNodeViewHolder<PersonTreeIt
         mPvHead = (PrintView) view.findViewById(R.id.pv_head);
         mTvContent = (TextView) view.findViewById(R.id.tv_content);
         mPvDown = (PrintView) view.findViewById(R.id.pv_down);
-        mIvHead = (ImageView) view.findViewById(R.id.iv_head);
     }
 
     @Override

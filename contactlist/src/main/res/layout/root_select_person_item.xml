@@ -25,13 +25,6 @@
             app:iconSize="24dp"
             app:iconText="&#xe087;" />
 
-        <ImageView
-            android:id="@+id/iv_head"
-            android:layout_width="19dp"
-            android:layout_height="19dp"
-            android:layout_gravity="center_vertical"
-            android:scaleType="centerCrop"/>
-
         <TextView
             android:id="@+id/tv_content"
             android:layout_width="0dp"
