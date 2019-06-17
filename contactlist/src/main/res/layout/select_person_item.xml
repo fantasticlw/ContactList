@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            app:iconText="&#xe087;"
+            app:iconText="&#xe189;"
             app:iconColor="@color/colorPrimary"
             app:iconFont="fonts/material-icon-font.ttf"
             app:iconSize="24dp" />

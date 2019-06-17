@@ -31,12 +31,12 @@ public class TestActivity extends BaseActivity {
         Button btnDep = findViewById(R.id.btnDep);
         textView = findViewById(R.id.textview);
 
-
+        //http://192.168.65.70:8182  阳江   192.168.20.90:8888/res111901 梅州
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SelectPersonActivity.class);//http://192.168.65.70:8182
-                intent.putExtra(ContactConst.ContactUrl, "http://192.168.20.90:8888/res111901/platform/api/management/contacts/getContactsByPolice?userId=ruice1&userType=1");  //http://192.168.20.90:8888/res111901/platform/api/management/contacts/getContactsByPolice?userId=ruice1&userType=1
+                Intent intent = new Intent(getApplicationContext(), SelectPersonActivity.class);
+                intent.putExtra(ContactConst.ContactUrl, "http://192.168.65.70:8182/platform/api/management/contacts/getContactsByPolice?userId=ruice1&userType=1");  //http://192.168.20.90:8888/res111901/platform/api/management/contacts/getContactsByPolice?userId=ruice1&userType=1
                 startActivityForResult(intent, 0);
             }
         });
@@ -45,7 +45,7 @@ public class TestActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SelectDepartmentActivity.class);
-                intent.putExtra(ContactConst.ContactUrl, "http://192.168.20.90:8888/res111901/platform/api/management/contacts/getContactsByPolice?userId=ruice1&userType=1");  //http://192.168.20.90:8888/res111901/platform/api/management/contacts/getContactsByPolice?userId=ruice1&userType=1
+                intent.putExtra(ContactConst.ContactUrl, "http://192.168.65.70:8182/platform/api/management/contacts/getContactsByPolice?userId=ruice1&userType=1");  //http://192.168.20.90:8888/res111901/platform/api/management/contacts/getContactsByPolice?userId=ruice1&userType=1
                 startActivityForResult(intent, ContactConst.iGetDeaprt);
             }
         });

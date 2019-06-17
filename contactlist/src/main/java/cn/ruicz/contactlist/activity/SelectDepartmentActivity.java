@@ -2,22 +2,31 @@ package cn.ruicz.contactlist.activity;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.gson.Gson;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import cn.ruicz.contactlist.R;
 import cn.ruicz.contactlist.entity.ContactBean;
@@ -43,6 +52,7 @@ public class SelectDepartmentActivity extends BaseActivity implements
         TreeNode.TreeNodeSelectedListener, TreeNode.TreeNodeClickListener, View.OnClickListener {
 
     private TextView tvDepart;
+    private ImageView ivDetail;
 
     private StringBuilder stringBuilder;
 
@@ -73,6 +83,7 @@ public class SelectDepartmentActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
 
         tvDepart = findViewById(R.id.tv_depart);
+        ivDetail = findViewById(R.id.iv_window);
 
         TypedValue typedValue = new TypedValue();
         getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true);
@@ -80,6 +91,7 @@ public class SelectDepartmentActivity extends BaseActivity implements
         SystemBarTintManager systemBarTintManager = new SystemBarTintManager(this);
         systemBarTintManager.setStatusBarTintColor(typedValue.data);//设置状态栏颜色
         systemBarTintManager.setStatusBarTintEnabled(true);//显示状态栏
+        ivDetail.setOnClickListener(this);
     }
 
     @Override
@@ -284,6 +296,52 @@ public class SelectDepartmentActivity extends BaseActivity implements
                 mDatas.clear();
             }
             getContactsByAuxiliaryPolice();
+        } else if(view.getId() == R.id.iv_window){
+            showListDialog();
         }
+    }
+
+    private void showListDialog() {
+//        final String[] items = new String[mDatas.size()];
+//        for (int i = 0; i < mDatas.size(); i++) {
+//            DeptAndUser user = ((PersonTreeItem)mDatas.get(i).getValue()).deptAndUser;
+//            items[i] = user.getDeptnName();
+//        }
+
+//        AlertDialog.Builder listDialog = new AlertDialog.Builder(this);
+//        listDialog.setTitle("已选部门：");
+//        listDialog.setItems(items, null);
+//        listDialog.setPositiveButton("关闭", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//            }
+//        });
+//        listDialog.show();
+
+        ArrayList<HashMap<String, String>> listDept = new ArrayList<>();
+        for (int i = 0; i < mDatas.size(); i++) {
+            DeptAndUser user = ((PersonTreeItem)mDatas.get(i).getValue()).deptAndUser;
+            HashMap<String, String> hashMap = new HashMap<>();
+            hashMap.put("name", user.deptnName);
+            listDept.add(hashMap);
+        }
+
+        AlertDialog.Builder customizeDialog = new AlertDialog.Builder(this);
+        final View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_layout,null);
+        customizeDialog.setTitle("已选部门：");
+        customizeDialog.setView(dialogView);
+
+        ListView recyclerView = dialogView.findViewById(R.id.rcDepartment);
+
+        SimpleAdapter simpleAdapter = new SimpleAdapter(this, listDept, R.layout.depart_select_item, new String[]{"name"}, new int[]{R.id.tv_name});
+        recyclerView.setAdapter(simpleAdapter);
+        customizeDialog.setPositiveButton("关闭", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        customizeDialog.show();
     }
 }
