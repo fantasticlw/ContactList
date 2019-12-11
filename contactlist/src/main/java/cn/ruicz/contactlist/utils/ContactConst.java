@@ -9,6 +9,7 @@ public class ContactConst {
     public static final String SELECTPERSON = "select_person";
     public static final String SELECTDEPARTMENT = "select_depart";
 
-    public static final int iGetDeaprt = 0x401;
+    public static final int iGetDeaprt     = 0x401;
+    public static final int iGetDeaprtSelf = 0x402;
 
 }

@@ -397,6 +397,26 @@ public class AndroidTreeView {
         checkSelected(node.getParent());
     }
 
+    public void selectNodeSelf(TreeNode node, boolean selected) {
+        if (mSelectionModeEnabled) {
+            node.setSelected(selected);
+            if(node.isContent()) {
+                if(mSelectedListener != null){
+                    if(node.isSelectedData() != selected) {
+                        if (selected) {
+                            mSelectedListener.add(node);
+                        } else {
+                            mSelectedListener.reMove(node);
+                        }
+                    }
+                }
+                node.setSelectedData(selected);
+            }
+            //toogleSelectionForNode(node, true);
+        }
+        //checkSelected(node.getParent());
+    }
+
     private void checkSelected(TreeNode treeNode){
         if(treeNode != null){
             boolean isSelected = false;

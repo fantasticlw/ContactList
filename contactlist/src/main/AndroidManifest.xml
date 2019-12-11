@@ -18,5 +18,6 @@
 
         <activity android:name=".activity.SelectPersonActivity" />
         <activity android:name=".activity.SelectDepartmentActivity" />
+        <activity android:name=".activity.SelectDepartmentSelfActivity" />
     </application>
 </manifest>

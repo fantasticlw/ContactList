@@ -12,6 +12,12 @@ public class DeptAndUser implements Parcelable {
 	public String deptCode;
 	@SerializedName("name")
 	public String deptnName ;
+	@SerializedName("pid")
+	public String pDeptCode ;
+	@SerializedName("users")
+	public List<ContactUser> users;
+	@SerializedName("departments")
+	public List<DeptAndUser> childrens;
 
 	protected DeptAndUser(Parcel in) {
 		deptCode = in.readString();
@@ -51,26 +57,15 @@ public class DeptAndUser implements Parcelable {
 		this.childrens = childrens;
 	}
 
-	@SerializedName("pid")
-	public String pDeptCode ;
 
 	public void setUsers(List<ContactUser> users) {
 		this.users = users;
 	}
 
-	@SerializedName("users")
-	public List<ContactUser> users;
-
-
-	@SerializedName("departments")
-	public List<DeptAndUser> childrens;
-
-
 
 	public DeptAndUser(){
 
 	}
-
 
 
 	public DeptAndUser(String deptCode, String deptnName,
@@ -79,7 +74,6 @@ public class DeptAndUser implements Parcelable {
 		this.deptnName = deptnName;
 		this.pDeptCode = pDeptCode;
 	}
-
 
 
 	public boolean hasChild(){
@@ -112,7 +106,6 @@ public class DeptAndUser implements Parcelable {
 	public void setDeptnName(String deptnName) {
 		this.deptnName = deptnName;
 	}
-
 
 
 
@@ -149,8 +142,5 @@ public class DeptAndUser implements Parcelable {
 	public synchronized void resetChildrens() {
 		childrens = null;
 	}
-
-
-
 
 }
